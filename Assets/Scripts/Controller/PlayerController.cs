@@ -35,6 +35,15 @@ public class PlayerController : MovementController
 
     public void OnInventory()
     {
-        _uiManager.GetUI<Inventory>().Active();
+        var inven = _uiManager.GetUI<Inventory>();
+        if(inven.gameObject.activeSelf)
+        {
+            inven.Disable();
+        }else
+        {
+            inven.Active();
+            inven.text1.text = "Unity : ";
+            inven.text2.text = "Test";
+        }
     }
 }
