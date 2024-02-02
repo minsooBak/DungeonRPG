@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03839423a60624b448c157a0f6c9fd4a, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  hp: 100
+  maxHP: 100
+  speed: 300
+  jumpForce: 5
+  mp: 100
+  maxMP: 100
