@@ -2,11 +2,7 @@ using UnityEngine;
 
 public class UIBase : MonoBehaviour
 {
-
-    public void Start()
-    {
-
-    }
+    public GameObject prefab;
 
     public void Active()
     {
