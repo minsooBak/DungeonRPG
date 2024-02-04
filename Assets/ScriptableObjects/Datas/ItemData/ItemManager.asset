@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 932b6eb498ec58c4fb4e3f146779f0cc, type: 3}
+  m_Name: ItemManager
+  m_EditorClassIdentifier: 
+  datas:
+  - Name: "\uB3CC \uAC80"
+    Description: "\uD3C9\uBC94\uD55C \uB3CC\uAC80\uC774\uB2E4"
+    Type: 0
+    DropItem: {fileID: 0}
+  - Name: "\uCCA0 \uAC80"
+    Description: "\uD3C9\uBC94\uD55C \uCCA0\uAC80\uC774\uB2E4"
+    Type: 0
+    DropItem: {fileID: 0}
+  - Name: "\uD558\uAE09 \uCCB4\uB825\uD3EC\uC158"
+    Description: "\uCCB4\uB825 10\uC774 \uD68C\uBCF5\uB429\uB2C8\uB2E4"
+    Type: 1
+    DropItem: {fileID: 0}
+  - Name: "\uD558\uAE09 \uB9C8\uB098\uD3EC\uC158"
+    Description: "\uCCB4\uB825 10\uC774 \uD68C\uBCF5\uB429\uB2C8\uB2E4"
+    Type: 1
+    DropItem: {fileID: 0}
+  - Name: Gold
+    Description: Gold
+    Type: 2
+    DropItem: {fileID: 0}

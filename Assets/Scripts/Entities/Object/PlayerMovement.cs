@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Camera _camera;
     private SpriteRenderer _spriteRenderer;
 
-    Vector3 dir;
+    private Vector3 _dir;
 
 
     private void FixedUpdate()
@@ -25,11 +25,12 @@ public class PlayerMovement : MonoBehaviour
 
         _controller.OnMove += Move;
         _controller.OnLook += Look;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     private void Move(Vector2 dir)
     {
-        this.dir = dir.normalized;
+        _dir = dir.normalized;
     }
 
     private void Look(Vector2 data)
@@ -40,6 +41,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateMove()
     {
-        _rigidbody.velocity = dir * (stat.speed * Time.fixedDeltaTime);
+        _rigidbody.velocity = _dir * (stat.speed * Time.fixedDeltaTime);
     }
 }

@@ -9,4 +9,6 @@ public class MovementObjectStat : ObjectStat
     public float jumpForce;
     public int mp;
     public int maxMP;
+
+    public int Gold;
 }

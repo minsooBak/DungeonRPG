@@ -42,8 +42,6 @@ public class PlayerController : MovementController
         }else
         {
             inven.Active();
-            inven.text1.text = "Unity : ";
-            inven.text2.text = "Test";
         }
     }
 }

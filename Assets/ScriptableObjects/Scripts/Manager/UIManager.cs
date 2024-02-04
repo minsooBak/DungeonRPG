@@ -36,6 +36,20 @@ public class UIManager : ScriptableObject
         uiBases.Remove(data);
     }
 
+    public bool TryGetUI<T>(out T data) where T: UIBase
+    {
+        foreach (UIBase ui in uiBases)
+        {
+            if (ui is T)
+            {
+                data = ui as T;
+                return true;
+            }
+        }
+        data = null;
+        return false;
+    }
+
     public void Clear()
     {
         uiBases.Clear();

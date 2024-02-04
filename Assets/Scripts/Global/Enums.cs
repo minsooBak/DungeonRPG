@@ -6,4 +6,11 @@ namespace EnumTypes
         Run,
         Attack
     }
+    
+    public enum ItemType
+    {
+        Equip,
+        Use,
+        Gold
+    }
 }
