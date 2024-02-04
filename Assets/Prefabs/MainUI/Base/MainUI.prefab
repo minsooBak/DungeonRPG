@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 230210234324182063}
   - component: {fileID: 3949974742074981924}
+  - component: {fileID: 4482275475534548430}
   m_Layer: 0
   m_Name: MainUI
   m_TagString: Untagged
@@ -45,3 +46,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 4990383921783862163, guid: becb747398b59b74693d39919f1fb64a, type: 3}
+  _slotPivot: {fileID: 0}
+  _slotObj: {fileID: 0}
+  _stat: {fileID: 0}
+  _goldText: {fileID: 0}
+--- !u!114 &4482275475534548430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669701473431017095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e895f7fa9486ccf469e1d3faa3a63be6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7714952974328332420, guid: 17edec175aa31d14d9337e77b160b2f5, type: 3}
+  signUI: {fileID: 0}
+  bankUI: {fileID: 0}
