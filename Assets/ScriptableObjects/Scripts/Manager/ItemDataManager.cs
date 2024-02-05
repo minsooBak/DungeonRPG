@@ -1,6 +1,6 @@
-using EnumTypes;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
+using Structs;
 
 [CreateAssetMenu(fileName ="ItemManager", menuName ="Data/DataManager/ItemData")]
 public class ItemDataManager : ScriptableObject
@@ -20,14 +20,17 @@ public class ItemDataManager : ScriptableObject
     {
         return items[itemName.GetHashCode()];
     }
+
+    public ItemBase GetCopyItem(string itemName)
+    {
+        ItemBase item = new();
+        ItemBase itemBase = items[itemName.GetHashCode()];
+        item.Name = itemBase.Name;
+        item.Description = itemBase.Description;
+        item.Type = itemBase.Type;
+        item.icon = itemBase.icon;
+        item.DropItem = itemBase.DropItem;
+        return item;
+    }
 }
 
-[System.Serializable]
-public struct ItemBase
-{
-    public string Name;
-    public string Description;
-    public ItemType Type;
-
-    public GameObject DropItem;
-}

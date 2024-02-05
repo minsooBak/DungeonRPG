@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 230210234324182063}
   - component: {fileID: 3949974742074981924}
   - component: {fileID: 4482275475534548430}
+  - component: {fileID: 4393600290727963552}
   m_Layer: 0
   m_Name: MainUI
   m_TagString: Untagged
@@ -63,5 +64,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 7714952974328332420, guid: 17edec175aa31d14d9337e77b160b2f5, type: 3}
-  signUI: {fileID: 0}
-  bankUI: {fileID: 0}
+  exitButton: {fileID: 0}
+  _idText: {fileID: 0}
+  _psText: {fileID: 0}
+--- !u!114 &4393600290727963552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669701473431017095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae37721dd4fb1147b00c52027b108d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5367535868163172767, guid: eb2a3182c598fc5408f2166328a7b39d, type: 3}
+  headerText: {fileID: 0}
+  mainText: {fileID: 0}

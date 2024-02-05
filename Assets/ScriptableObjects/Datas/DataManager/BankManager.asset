@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b04100a628f0db34ab0bcceb1837060d, type: 3}
-  m_Name: MainUI
+  m_Script: {fileID: 11500000, guid: 34d7035a950086e4da525be407f675b6, type: 3}
+  m_Name: BankManager
   m_EditorClassIdentifier: 
-  uiBases: []
-  uiBasePrefab: {fileID: 1669701473431017095, guid: 19eb186ff1d11c84f984cc2f4dddff77, type: 3}

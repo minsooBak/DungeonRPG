@@ -16,20 +16,25 @@ MonoBehaviour:
   - Name: "\uB3CC \uAC80"
     Description: "\uD3C9\uBC94\uD55C \uB3CC\uAC80\uC774\uB2E4"
     Type: 0
-    DropItem: {fileID: 0}
+    icon: {fileID: 1777749549, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
+    DropItem: {fileID: 5417316801530321548, guid: 25b451d78bf62464ba149051a319e2a2, type: 3}
   - Name: "\uCCA0 \uAC80"
     Description: "\uD3C9\uBC94\uD55C \uCCA0\uAC80\uC774\uB2E4"
     Type: 0
+    icon: {fileID: -155058199, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
     DropItem: {fileID: 0}
   - Name: "\uD558\uAE09 \uCCB4\uB825\uD3EC\uC158"
     Description: "\uCCB4\uB825 10\uC774 \uD68C\uBCF5\uB429\uB2C8\uB2E4"
     Type: 1
+    icon: {fileID: 330969689, guid: 39b366b11014f624f99406e526f01890, type: 3}
     DropItem: {fileID: 0}
   - Name: "\uD558\uAE09 \uB9C8\uB098\uD3EC\uC158"
     Description: "\uCCB4\uB825 10\uC774 \uD68C\uBCF5\uB429\uB2C8\uB2E4"
     Type: 1
+    icon: {fileID: -1173426263, guid: 39b366b11014f624f99406e526f01890, type: 3}
     DropItem: {fileID: 0}
   - Name: Gold
     Description: Gold
     Type: 2
+    icon: {fileID: 1166199208, guid: 39b366b11014f624f99406e526f01890, type: 3}
     DropItem: {fileID: 0}

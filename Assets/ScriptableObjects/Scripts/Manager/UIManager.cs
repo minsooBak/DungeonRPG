@@ -10,9 +10,9 @@ public class UIManager : ScriptableObject
 
     public T GetUI<T>() where T : UIBase
     {
-        foreach(UIBase ui in uiBases)
+        foreach (UIBase ui in uiBases)
         {
-            if(ui is T)
+            if (ui is T)
             {
                 return ui as T;
             }

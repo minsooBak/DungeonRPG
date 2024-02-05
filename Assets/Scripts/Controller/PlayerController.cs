@@ -36,12 +36,12 @@ public class PlayerController : MovementController
     public void OnInventory()
     {
         var inven = _uiManager.GetUI<Inventory>();
-        if(inven.gameObject.activeSelf)
+        if(inven.prefab.activeSelf)
         {
-            inven.Disable();
+            inven.prefab.SetActive(false);
         }else
         {
-            inven.Active();
+            inven.prefab.SetActive(true);
         }
     }
 }

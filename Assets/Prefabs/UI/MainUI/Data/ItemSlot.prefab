@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 99
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4282466625
-  m_fontColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 1}
+  m_fontColor: {r: 1, g: 0.94832873, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -266,9 +266,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ecb5ec47dc285b468df802f27f9b617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconObj: {fileID: 7982339467623147797}
+  prefab: {fileID: 0}
   highlight: {fileID: 6484840129221293110}
-  image: {fileID: 5560992895180599849}
+  item:
+    Name: 
+    Description: 
+    Type: 0
+    icon: {fileID: 0}
+    DropItem: {fileID: 0}
+  icon: {fileID: 5560992895180599849}
   amount: {fileID: 4592953988402953623}
 --- !u!223 &7930221628812994375
 Canvas:
