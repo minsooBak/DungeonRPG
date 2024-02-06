@@ -892,9 +892,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 2099384375407541465}
   _slotPivot: {fileID: 1133507520384090402}
-  _slotObj: {fileID: 5012365337934662962, guid: 5542c08c760f3b24f8b53cfc73679a23, type: 3}
+  _slotObj: {fileID: 4354302249651751502, guid: 9e1247a5cdbee094081610a3d57ee436, type: 3}
+  dropPivot: {fileID: 0}
   _stat: {fileID: 11400000, guid: f00d959373ccfd246adc6b4107011278, type: 2}
   _goldText: {fileID: 6233621379213298335}
+  beginSlot: {fileID: 0}
 --- !u!223 &6421094237300961626
 Canvas:
   m_ObjectHideFlags: 0
@@ -933,7 +935,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 720}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
 using TMPro;
-using Structs;
 
 public class Bank : UIBase
 {

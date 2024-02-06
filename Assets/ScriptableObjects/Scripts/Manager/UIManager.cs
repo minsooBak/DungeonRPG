@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 [CreateAssetMenu(fileName ="UIManager", menuName = "Data/UIManager")]
 public class UIManager : ScriptableObject
@@ -7,6 +8,7 @@ public class UIManager : ScriptableObject
     public List<UIBase> uiBases = new();
     public GameObject uiBasePrefab;
     private GameObject _obj;
+    [SerializeField] private SpriteAtlas _atlas;
 
     public T GetUI<T>() where T : UIBase
     {
@@ -53,6 +55,11 @@ public class UIManager : ScriptableObject
     public void Clear()
     {
         uiBases.Clear();
+    }
+
+    public Sprite GetSprite(string name)
+    {
+        return _atlas.GetSprite(name);
     }
 
     private void CreateBasePrefab()

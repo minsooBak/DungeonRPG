@@ -18,3 +18,4 @@ MonoBehaviour:
   jumpForce: 5
   mp: 100
   maxMP: 100
+  Gold: 0

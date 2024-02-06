@@ -3,18 +3,18 @@
     "ID": "test",
     "PS": "12345",
     "Name": "Qwer",
-    "Gold": 6000
+    "Gold": 20000
   },
   {
     "ID": "test1",
     "PS": "12345",
     "Name": "Abc",
-    "Gold": 3000
+    "Gold": 0
   },
   {
     "ID": "test2",
     "PS": "12345",
     "Name": "Abcd",
-    "Gold": 3000
+    "Gold": 0
   }
 ]

@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 public class PlayerController : MovementController
 {
     [SerializeField]
     private UIManager _uiManager;
+
     public void Move(InputAction.CallbackContext context)
     {
         if(context.phase == InputActionPhase.Performed)
@@ -36,12 +36,22 @@ public class PlayerController : MovementController
     public void OnInventory()
     {
         var inven = _uiManager.GetUI<Inventory>();
-        if(inven.prefab.activeSelf)
+        if (inven.prefab.activeSelf)
         {
             inven.prefab.SetActive(false);
-        }else
+        }
+        else
         {
             inven.prefab.SetActive(true);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Item"))
+        {
+            _uiManager.GetUI<Inventory>().AddItem(other.GetComponent<Item>().item);
+            Destroy(other.gameObject);
+        }    
     }
 }
