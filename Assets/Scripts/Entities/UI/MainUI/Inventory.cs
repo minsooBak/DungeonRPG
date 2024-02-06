@@ -8,21 +8,24 @@ public class Inventory : UIBase
     [Header("Slot")]
     [SerializeField] private Transform _slotPivot;
     [SerializeField] private GameObject _slotObj;
-    //TODO SlotClassList
-    private const int MAX_SIZE = 35;
     private List<ItemSlot> slots = new List<ItemSlot>(MAX_SIZE);
+    private const int MAX_SIZE = 35;
+    public Transform dropPivot;
     [Header("Gold")]
     [SerializeField] private MovementObjectStat _stat;
     [SerializeField] private TextMeshProUGUI _goldText;
 
+    //[HideInInspector]
+    public ItemSlot beginSlot;
+
     public void Init()
     {
         _goldText.text = _stat.Gold.ToString("N0");
+        dropPivot = GameObject.Find("Player").GetComponent<Transform>();
         for(int i = 0; i <  MAX_SIZE; i++)
         {
             GameObject slot = Instantiate(_slotObj, _slotPivot);
             slots.Add(slot.GetComponent<ItemSlot>());
-            slots[0].SetIndex(i);
             slot.transform.localScale = Vector3.one;
         }
     }
@@ -34,26 +37,36 @@ public class Inventory : UIBase
         {
             if(item.Name == "Gold")
             {
-                int gold = int.Parse(_goldText.text) + 1000;
-                _goldText.text = gold.ToString("N0");
-                _stat.Gold = gold;
+                _stat.Gold += 1000;
+                _goldText.text = _stat.Gold.ToString("N0");
                 return;
             }
 
             foreach(var slot in slots)
             {
-                if(slot.prefab == null)
+                if(!slot.HasItem)
                 {
                     slot.item = item;
-                    slot.prefab = item.DropItem;
-                    slot.icon.sprite = item.icon;
+                    slot.SetSprite(item.icon);
                     return;
                 }
             }
         }else
         {
-            i.amount.gameObject.SetActive(true);
+            if (i.amount.text == "1")
+                i.amount.gameObject.SetActive(true);
             i.amount.text = (int.Parse(i.amount.text) + 1).ToString();
         }
+    }
+
+    public void PostData(ItemBase item, string amount, out ItemBase data, out string outAmount)
+    {
+        data = beginSlot.item;
+        outAmount = beginSlot.amount.text;
+        beginSlot.item = item;
+        beginSlot.SetSprite(item.icon);
+        beginSlot.amount.text = amount;
+        beginSlot.Init();
+        beginSlot = null;
     }
 }

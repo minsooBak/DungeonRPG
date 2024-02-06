@@ -20,17 +20,5 @@ public class ItemDataManager : ScriptableObject
     {
         return items[itemName.GetHashCode()];
     }
-
-    public ItemBase GetCopyItem(string itemName)
-    {
-        ItemBase item = new();
-        ItemBase itemBase = items[itemName.GetHashCode()];
-        item.Name = itemBase.Name;
-        item.Description = itemBase.Description;
-        item.Type = itemBase.Type;
-        item.icon = itemBase.icon;
-        item.DropItem = itemBase.DropItem;
-        return item;
-    }
 }
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainUI : MonoBehaviour
 {
@@ -28,12 +29,27 @@ public class MainUI : MonoBehaviour
 
     public void AddItem()
     {
-        _uiManager.GetUI<Inventory>().AddItem(_itemDataManager.GetCopyItem("돌 검"));
+        float r = Random.Range(0f, 1f);
+        switch(r)
+        {
+            case < 0.2f:
+                _uiManager.GetUI<Inventory>().AddItem(_itemDataManager.GetItem("돌 검"));
+                break;
+            case < 0.4f:
+                _uiManager.GetUI<Inventory>().AddItem(_itemDataManager.GetItem("철 검"));
+                break;
+            case < 0.6f:
+                _uiManager.GetUI<Inventory>().AddItem(_itemDataManager.GetItem("하급 체력포션"));
+                break;
+            case < 0.8f:
+                _uiManager.GetUI<Inventory>().AddItem(_itemDataManager.GetItem("하급 마나포션"));
+                break;
+        }
     }
 
     public void AddGold()
     {
-        _uiManager.GetUI<Inventory>().AddItem(_itemDataManager.GetCopyItem("Gold"));
+        _uiManager.GetUI<Inventory>().AddItem(_itemDataManager.GetItem("Gold"));
     }
 
     private void Disable()
