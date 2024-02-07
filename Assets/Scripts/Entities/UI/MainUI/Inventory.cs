@@ -1,6 +1,7 @@
 using Structs;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Inventory : UIBase
@@ -8,64 +9,107 @@ public class Inventory : UIBase
     [Header("Slot")]
     [SerializeField] private Transform _slotPivot;
     [SerializeField] private GameObject _slotObj;
-    private List<ItemSlot> slots = new List<ItemSlot>(MAX_SIZE);
+    private ItemSlot[] slotArray = new ItemSlot[MAX_SIZE];
+    private Dictionary<int, int> slots = new Dictionary<int, int>();//아이템고유ID, 인덱스리스트
+    private Dictionary<string, List<int>> itemNames = new Dictionary<string, List<int>>();//아이템이름, 아이템ID
     private const int MAX_SIZE = 35;
     public Transform dropPivot;
     [Header("Gold")]
     [SerializeField] private MovementObjectStat _stat;
     [SerializeField] private TextMeshProUGUI _goldText;
 
-    //[HideInInspector]
+    [SerializeField] private ItemDataManager _itemDataManager;
+
+    [HideInInspector]
     public ItemSlot beginSlot;
 
     public void Init()
     {
+        _itemDataManager.Init();
         _goldText.text = _stat.Gold.ToString("N0");
         dropPivot = GameObject.Find("Player").GetComponent<Transform>();
         for(int i = 0; i <  MAX_SIZE; i++)
         {
             GameObject slot = Instantiate(_slotObj, _slotPivot);
-            slots.Add(slot.GetComponent<ItemSlot>());
+            slotArray[i] = slot.GetComponent<ItemSlot>();
+            slotArray[i].item = null;
             slot.transform.localScale = Vector3.one;
         }
     }
 
-    public void AddItem(ItemBase item)
+    public void AddItem(string itemName)
     {
-        var i = slots.Find((x) => x.item.Name == item.Name);
-        if (i == null)
+        if (itemName == "Gold")
         {
-            if(item.Name == "Gold")
+            _stat.Gold += 1000;
+            _goldText.text = _stat.Gold.ToString("N0");
+            return;
+        }
+        else if (itemNames.ContainsKey(itemName))
+        {
+            List<int> list = itemNames[itemName];
+            foreach(var id in list)
             {
-                _stat.Gold += 1000;
-                _goldText.text = _stat.Gold.ToString("N0");
-                return;
-            }
-
-            foreach(var slot in slots)
-            {
-                if(!slot.HasItem)
+                int slotIndex = slots[id];
+                ItemSlot slot = slotArray[slotIndex];
+                if (slot.IsAddItem)
                 {
-                    slot.item = item;
-                    slot.SetSprite(item.icon);
+                    slot._amount++;
+                    slot.SetAmount();
                     return;
                 }
             }
-        }else
+            AddItemToEmptySlot(itemName);
+        }
+        else
         {
-            if (i.amount.text == "1")
-                i.amount.gameObject.SetActive(true);
-            i.amount.text = (int.Parse(i.amount.text) + 1).ToString();
+            AddItemToEmptySlot(itemName);
         }
     }
 
-    public void PostData(ItemBase item, string amount, out ItemBase data, out string outAmount)
+    private void AddItemToEmptySlot(string itemName)
+    {
+        for(int i = 0; i < slotArray.Length; i++)
+        {
+            if (!slotArray[i].HasItem)
+            {
+                ItemBase newItem = _itemDataManager.GetItem(itemName);
+                slotArray[i].item = newItem;
+                slotArray[i]._amount = 1;
+                slotArray[i].SetSprite(newItem.icon);
+                if (itemNames.TryGetValue(itemName, out List<int> list))
+                {
+                    list.Add(newItem.ID);
+                }
+                else
+                {
+                    itemNames.Add(itemName, new List<int>());
+                    itemNames[itemName].Add(newItem.ID);
+                }
+                slots.Add(newItem.ID, i);
+                break;
+            }
+            if(i == slotArray.Length - 1)
+            {
+                Debug.Log("Inventory is Full");
+            }
+        }
+    }
+
+    public void PostData(ItemBase item, out ItemBase data)
     {
         data = beginSlot.item;
-        outAmount = beginSlot.amount.text;
+        if (item == null)
+        {
+            beginSlot.item = null;
+            beginSlot._amount = 0;
+            beginSlot.SetSprite(null);
+            beginSlot.Init();
+            beginSlot = null;
+        }
         beginSlot.item = item;
         beginSlot.SetSprite(item.icon);
-        beginSlot.amount.text = amount;
+        beginSlot.SetAmount();
         beginSlot.Init();
         beginSlot = null;
     }

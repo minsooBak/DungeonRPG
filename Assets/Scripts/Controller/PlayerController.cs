@@ -50,7 +50,7 @@ public class PlayerController : MovementController
     {
         if(other.CompareTag("Item"))
         {
-            _uiManager.GetUI<Inventory>().AddItem(other.GetComponent<Item>().item);
+            _uiManager.GetUI<Inventory>().AddItem(other.GetComponent<Item>().Name);
             Destroy(other.gameObject);
         }    
     }

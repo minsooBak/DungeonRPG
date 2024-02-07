@@ -896,6 +896,7 @@ MonoBehaviour:
   dropPivot: {fileID: 0}
   _stat: {fileID: 11400000, guid: f00d959373ccfd246adc6b4107011278, type: 2}
   _goldText: {fileID: 6233621379213298335}
+  _itemDataManager: {fileID: 11400000, guid: 09d22ea494eb3204899e34eb8c7f6b9f, type: 2}
   beginSlot: {fileID: 0}
 --- !u!223 &6421094237300961626
 Canvas:

@@ -6,14 +6,27 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
-    public ItemBase item;
+    [HideInInspector] public ItemBase item = null;
     [SerializeField] private Image icon;
-    public TextMeshProUGUI amount;
+    [SerializeField] private TextMeshProUGUI _amountText;
     private Inventory _inventory;
-    [HideInInspector]public Transform _startParent;
+    [HideInInspector] public Transform _startParent;
     private Rect baseRect;
-    public bool HasItem => icon.sprite != null;
+    public int _amount;
 
+    public bool HasItem => item != null;
+    public bool IsAddItem => _amount < item.maxAmount;
+    public void SetAmount() 
+    {
+        _amountText.text = _amount.ToString(); 
+        if(_amount > 1)
+        {
+            _amountText.gameObject.SetActive(true);
+        }else
+        {
+            _amountText.gameObject.SetActive(false);
+        }
+    }
     public void SetSprite(Sprite img) { icon.sprite = img; }
 
     public void Awake()
@@ -28,10 +41,7 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         icon.transform.SetAsFirstSibling();
         icon.transform.localPosition = Vector3.zero;
         icon.rectTransform.sizeDelta = new Vector2(90f, 90);
-        if (amount.text != "1")
-            amount.gameObject.SetActive(true);
-        else
-            amount.gameObject.SetActive(false);
+        SetAmount();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -59,20 +69,17 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             || icon.transform.localPosition.y < baseRect.yMin
             || icon.transform.localPosition.y > baseRect.yMax)
             {
-                amount.text = (int.Parse(amount.text) - 1).ToString();
-                if (amount.text == "1")
-                {
-                    amount.gameObject.SetActive(false);
-                }
-                else if(amount.text == "0")
-                {
-                    amount.text = "1";
-                    icon.sprite = null;
-                    item.Name = string.Empty;
-                }
+                _amount -= 1;
+                SetAmount();
                 
                 Instantiate(item.DropItem).transform.position = _inventory.dropPivot.position + new Vector3(0, 2f, 0);
-
+                if(_amount == 0)
+                {
+                    _amount = 1;
+                    SetAmount();
+                    icon.sprite = null;
+                    item = null;
+                }
             }
             icon.transform.SetParent(_startParent);
             icon.transform.SetAsFirstSibling();
@@ -86,13 +93,9 @@ public class ItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnDrop(PointerEventData eventData)
     {
         if (_inventory.beginSlot == null) return;
-        string str;
-        _inventory.PostData(item, amount.text, out item, out str);
+        _inventory.PostData(item, out item);
         icon.sprite = item.icon;
-        amount.text = str;
-        if (str == "1")
-            amount.gameObject.SetActive(false);
-        else
-            amount.gameObject.SetActive(true);
+
+        SetAmount();
     }
 }

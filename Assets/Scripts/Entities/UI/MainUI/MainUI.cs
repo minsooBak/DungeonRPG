@@ -6,12 +6,10 @@ public class MainUI : MonoBehaviour
     [SerializeField] private GameObject mainUI;
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private BankDataManager _bankDataManager;
-    [SerializeField] private ItemDataManager _itemDataManager;
 
     public void Awake()
     {
         _bankDataManager.Init();
-        _itemDataManager.Init();
         var inven = _uiManager.GetUI<Inventory>();
         inven.Init();
         inven.prefab.SetActive(false);
@@ -33,23 +31,23 @@ public class MainUI : MonoBehaviour
         switch(r)
         {
             case < 0.2f:
-                _uiManager.GetUI<Inventory>().AddItem(_itemDataManager.GetItem("돌 검"));
+                _uiManager.GetUI<Inventory>().AddItem("돌 검");
                 break;
             case < 0.4f:
-                _uiManager.GetUI<Inventory>().AddItem(_itemDataManager.GetItem("철 검"));
+                _uiManager.GetUI<Inventory>().AddItem("철 검");
                 break;
             case < 0.6f:
-                _uiManager.GetUI<Inventory>().AddItem(_itemDataManager.GetItem("하급 체력포션"));
+                _uiManager.GetUI<Inventory>().AddItem("하급 체력포션");
                 break;
             case < 0.8f:
-                _uiManager.GetUI<Inventory>().AddItem(_itemDataManager.GetItem("하급 마나포션"));
+                _uiManager.GetUI<Inventory>().AddItem("하급 마나포션");
                 break;
         }
     }
 
     public void AddGold()
     {
-        _uiManager.GetUI<Inventory>().AddItem(_itemDataManager.GetItem("Gold"));
+        _uiManager.GetUI<Inventory>().AddItem("Gold");
     }
 
     private void Disable()

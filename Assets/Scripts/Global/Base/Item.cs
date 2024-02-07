@@ -6,15 +6,9 @@ public class Item : MonoBehaviour
     //[SerializeField] private float jumpPower = 50f;
     [SerializeField] private ItemDataManager _itemManager;
     [SerializeField] private float startY;
-    [SerializeField] private string _name;
-    [HideInInspector] public ItemBase item;
+    [SerializeField] public string Name;
 
     private float time;
-
-    private void Awake()
-    {
-        item = _itemManager.GetItem(_name);
-    }
 
     private void FixedUpdate()
     {

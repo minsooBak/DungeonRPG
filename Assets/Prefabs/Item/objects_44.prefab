@@ -48,13 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemManager: {fileID: 11400000, guid: 09d22ea494eb3204899e34eb8c7f6b9f, type: 2}
   startY: 0
-  _name: "\uB3CC \uAC80"
-  item:
-    Name: 
-    Description: 
-    Type: 0
-    icon: {fileID: 0}
-    DropItem: {fileID: 0}
+  Name: "\uD558\uAE09 \uCCB4\uB825\uD3EC\uC158"
 --- !u!212 &3405661705688973141
 SpriteRenderer:
   m_ObjectHideFlags: 0
